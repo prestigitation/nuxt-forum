@@ -1,0 +1,32 @@
+.auth_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth_form>input {
+    margin: 10px;
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid black;
+    width: 250px;
+    text-align: center;
+}
+
+#register_text {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+#submit_button {
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#submit_button:hover {
+    background-color: rgb(0, 162, 255);
+    cursor: pointer;
+}
