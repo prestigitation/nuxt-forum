@@ -1,15 +1,18 @@
 <template>
+<ssr>
   <div class="container">
     <div class="page">
       <header class="header">
         <div class="header_content">
           <div class="header_section">
             <NuxtLink to='/' class="header_section_text">
+                  <img src='icon.png' class="popup_image">
                   Nuxt-Forum
             </NuxtLink>
           </div>
           <div class="header_section">
-            <NuxtLink to='/search' class="header_section_text">
+            <NuxtLink to='/search' class="header_section_text" @mouseenter="showIcon('search')">
+                <img src="search.png" alt="search" id="search" class="popup_image">
                 Поиск
             </NuxtLink>
           </div>
@@ -27,6 +30,11 @@
               Зарегистрироваться
             </NuxtLink>
           </div>
+          <div class="header_section" v-if="$store.state.user">
+            <NuxtLink class="header_section_text" :to="'/users/' + $store.state.user.id">
+              {{ $store.state.user.login }}
+            </NuxtLink>
+          </div>
           <div class="header_section"
           id="logout_section"
           v-if='$store.state.user'
@@ -34,6 +42,10 @@
             <span class="header_section_text" @click.prevent='logout'>
               Выйти
             </span>
+          </div>
+          <div class="header_section">
+            <NuxtLink to='/dashboard' >
+            dash </NuxtLink>
           </div>
         </div>
       </header>
@@ -46,12 +58,16 @@
 
     </div>
   </div>
+</ssr>
 </template>
 <script>
   export default {
     methods:{
       logout() {
         this.$store.dispatch('logout')
+      },
+      showIcon(icon) {
+        window.getElementById(icon).style.display = 'block';
       }
     }
   }
@@ -92,5 +108,9 @@
   #logout_section {
     cursor : pointer;
   }
-
+  .popup_image {
+    width :25px;
+    height :25px;
+    display : none;
+  }
 </style>

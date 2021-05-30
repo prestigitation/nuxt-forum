@@ -1,8 +1,9 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../sequelize');
+const Role = require('./Role');
 
 
-const User = sequelize.define('User', {
+const User = sequelize.define('user', {
     id: {
         type: DataTypes.BIGINT,
         allowNull: false,
@@ -24,7 +25,9 @@ const User = sequelize.define('User', {
         min: 6
     }
 }, {
-    table: 'users'
+    updatedAt: false
 });
+User.belongsTo(Role)
+Role.hasOne(User)
 
 module.exports = User;
