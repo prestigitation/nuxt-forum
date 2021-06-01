@@ -25,7 +25,10 @@ const User = sequelize.define('user', {
         min: 6
     }
 }, {
-    updatedAt: false
+    updatedAt: false,
+    defaultScope: {
+        exclude: ['password', 'email,roleId']
+    }
 });
 User.belongsTo(Role)
 Role.hasOne(User)

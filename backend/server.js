@@ -8,6 +8,17 @@ const SectionController = require('./Controllers/SectionController')
 app.use(express.json())
 app.use(cors())
 
+// ------------------------------GET -----------------------------------------------------
+app.get('/api/sections', async(req, res) => {
+    await SectionController.getAll().then((sections) => res.json(sections)).catch(() => res.sendStatus(404))
+})
+app.get('/moderator/sections/:id', async(req, res) => {
+    await SectionController.getModeratedSections(req.params.id).then(sections => res.json(sections)).catch(() => res.sendStatus(404))
+})
+
+
+
+// -------------------------------POST-----------------------------------------------------
 app.post('/api/register', async(req, res) => {
     await UserController.register(req.body).then(user => { res.json(user) }).catch(() => { res.sendStatus(401) })
 })

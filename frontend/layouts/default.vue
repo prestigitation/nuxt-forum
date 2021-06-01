@@ -1,5 +1,4 @@
 <template>
-<ssr>
   <div class="container">
     <div class="page">
       <header class="header">
@@ -11,7 +10,7 @@
             </NuxtLink>
           </div>
           <div class="header_section">
-            <NuxtLink to='/search' class="header_section_text" @mouseenter="showIcon('search')">
+            <NuxtLink to='/search' class="header_section_text">
                 <img src="search.png" alt="search" id="search" class="popup_image">
                 Поиск
             </NuxtLink>
@@ -58,7 +57,6 @@
 
     </div>
   </div>
-</ssr>
 </template>
 <script>
   export default {
@@ -66,9 +64,6 @@
       logout() {
         this.$store.dispatch('logout')
       },
-      showIcon(icon) {
-        window.getElementById(icon).style.display = 'block';
-      }
     }
   }
 </script>

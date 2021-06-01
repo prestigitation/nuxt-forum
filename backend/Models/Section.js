@@ -1,6 +1,5 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../sequelize');
-const moderator = require('./Moderator')
 const User = require('./User');
 
 
