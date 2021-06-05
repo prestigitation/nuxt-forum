@@ -6,7 +6,6 @@ const Role = require('./Role');
 const User = sequelize.define('user', {
     id: {
         type: DataTypes.BIGINT,
-        allowNull: false,
         autoIncrement: true,
         primaryKey: true
     },
@@ -26,8 +25,8 @@ const User = sequelize.define('user', {
     }
 }, {
     updatedAt: false,
-    defaultScope: {
-        exclude: ['password', 'email,roleId']
+    attributes: {
+        exclude: ['password', 'email', 'roleId']
     }
 });
 User.belongsTo(Role)

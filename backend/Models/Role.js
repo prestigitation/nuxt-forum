@@ -6,7 +6,6 @@ const User = require('./User');
 const Role = sequelize.define('role', {
     id: {
         type: DataTypes.BIGINT,
-        allowNull: false,
         autoIncrement: true,
         primaryKey: true
     },

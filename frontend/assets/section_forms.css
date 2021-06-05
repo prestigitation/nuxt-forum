@@ -1,0 +1,14 @@
+.section_form_input {
+    width: 500px;
+    border-color: rgb(35, 119, 139);
+    padding: 7px;
+}
+
+.section_form_textarea {
+    margin-top: 15px;
+}
+
+.section_form_files {
+    margin-top: 15px;
+    border-color: rgb(35, 119, 139);
+}

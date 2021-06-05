@@ -6,7 +6,6 @@ const User = require('./User');
 const Section = sequelize.define('section', {
     id: {
         type: DataTypes.BIGINT,
-        allowNull: false,
         autoIncrement: true,
         primaryKey: true
     },

@@ -71,6 +71,11 @@ class SectionController {
             })
         })
     }
+    findBySlug(slug) {
+        return new Promise((resolve, reject) => {
+            Section.findOne({ where: { slug } }).then(section => resolve(section)).catch(e => reject(404))
+        })
+    }
 }
 
 
