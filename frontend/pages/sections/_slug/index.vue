@@ -24,27 +24,7 @@
 
       <div v-else>
         <div class="posts_container">
-          <div v-for="post in section_posts" :key="post.id">
-            <div class="post">
-              <div class="post_left_side">
-                <div class="post_image">
-                  <img src="../../../static/post_logo.jpg" width="50" height="50">
-                </div>
-                <div class='post_description'>
-                    <div class="post_title">
-                      <NuxtLink :to="'/sections/'+ $route.params.slug + '/' + post.id + '-' + post.slug">
-                        {{ post.title }}
-                      </NuxtLink>
-                    </div>
-                  <div class='post_content' v-html="post.content"></div>
-                </div>
-              </div>
-              <div class="post_right_side">
-                <div> Последнее сообщение</div>
-                <div> Иван, 19:00 </div>
-              </div>
-            </div>
-          </div>
+          <pagination :items='section_posts'/>
         </div>
       </div>
     </div>
@@ -54,9 +34,9 @@
 <script>
 import { VueEditor } from "vue2-editor";
 import '../../../assets/section_forms.css'
-import '../../../assets/posts.css'
+import pagination from '../../../assets/pagination.vue'
 export default {
-  components : {VueEditor},
+  components : {VueEditor,pagination},
   async fetch() {
     await this.$axios.get('http://localhost:4000/api/sections/' + this.$route.params.slug).then(({data}) => {
       this.section_posts = data
@@ -92,7 +72,7 @@ export default {
   }
 </script>
 
-<style>
+<style scoped>
   .section_container {
     width: 1260px;
     margin-left: auto;
